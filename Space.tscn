@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0taeuixpbjyv"]
+
+[ext_resource type="Script" path="res://Orbiter.gd" id="1_5lefu"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_c40ug"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2kwwa"]
+radius = 10.008
+
+[sub_resource type="SphereMesh" id="SphereMesh_xgx0y"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_iujj0"]
+radius = 0.997504
+
+[node name="Space" type="Node3D"]
+
+[node name="B612" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="B612"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+mesh = SubResource("SphereMesh_c40ug")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="B612"]
+shape = SubResource("SphereShape3D_2kwwa")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000384331, 0, 34.6507)
+
+[node name="Orbiter" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
+gravity_scale = 0.0
+linear_velocity = Vector3(0, 6, 6)
+script = ExtResource("1_5lefu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Orbiter"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("SphereMesh_xgx0y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Orbiter"]
+shape = SubResource("SphereShape3D_iujj0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
